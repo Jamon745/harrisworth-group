@@ -1,13 +1,13 @@
 // import { useState } from 'react'
-
+import Hero from "./views/Hero";
 import './App.css'
 
 function App() {
 
   return (
     <>
-      <div className='bg-red-500'>
-        <h1>Harrisworth: Your international study partner</h1>
+      <div>
+        <Hero />
         
         
       </div>

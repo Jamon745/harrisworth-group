@@ -1,0 +1,161 @@
+import { useState, useEffect } from "react";
+import { Menu, X, ArrowRight } from "lucide-react";
+import Logo from "../assets/Harrisworthg-logo.png";
+import HeroImg from "../assets/heroimg.jpg";
+import HeroImg2 from "../assets/heroimg2.jpg";
+import HeroImg3 from "../assets/heroImg3.jpg";
+import HeroImg4 from "../assets/heroImg4.jpg";
+import HeroImg5 from "../assets/heroImg5.jpg";
+import HeroImg6 from "../assets/heroImg6.jpg";
+
+
+
+const Hero = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const backgroundImages = [
+    HeroImg,
+    HeroImg2,
+    HeroImg3,
+    HeroImg4,
+    HeroImg5,
+    HeroImg6,
+  ];
+
+  const navItems = [
+    "Home",
+    "About",
+    "Services",
+    "How it Works",
+    "Contact Us"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex(
+        (prevIndex) => (prevIndex + 1) % backgroundImages.length
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="relative min-h-screen overflow-hidden">
+      {/* Background Images */}
+      {backgroundImages.map((image, index) => (
+        <div
+          key={index}
+          className="absolute inset-0 h-full w-full bg-cover bg-center transition-opacity duration-1000 z-0"
+          style={{
+            backgroundImage: `url(${image})`,
+            opacity: currentImageIndex === index ? 1 : 0,
+          }}
+        />
+      ))}
+
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/50 z-10" />
+
+      {/* Content Container */}
+      <div className="relative z-10">
+        {/* Navbar */}
+        <nav className="container mx-auto px-6 py-6">
+          <div className="-mt-6 flex items-center justify-between">
+            {/* Logo */}
+            <div className="flex items-center space-x-2">
+              <img src={Logo} className="h-20 w-auto" alt="Company Logo" />
+              <span className=" text-2xl lg:text-3xl font-bold text-[#50a2ff]">
+                Harrisworth <span className="text-orange-500">Group</span>
+              </span>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex space-x-8">
+              {navItems.map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+                  className=" text-xl font-semibold text-[#50a2ff] hover:text-orange-500 transition-colors duration-300"
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden text-white focus:outline-none"
+            >
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
+
+          {/* Mobile Navigation */}
+          {isMenuOpen && (
+            <div className="md:hidden mt-4 bg-black/80 bg-opacity-10 backdrop-blur-md rounded-lg p-4">
+              {navItems.map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+                  className="block text-white hover:text-[#50a2ff] py-2 transition-colors duration-300"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          )}
+        </nav>
+
+        {/* Hero Content */}
+        <div className="container mx-auto px-6 flex items-center justify-center min-h-[calc(100vh-120px)]">
+          <div className="text-center max-w-4xl">
+            <h1 className="text-4xl md:text-7xl font-bold text-orange-500 mb-6 leading-tight">
+              Transform Your
+              <span className="block text-[#50a2ff]">Educational Journey</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto">
+              Expert guidance to help students, parents and schools achieve
+              their academic goals and unlock their full potential
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button className="group bg-[#50a2ff] hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105">
+                <span>Get Started</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </button>
+              <button className="bg-orange-500 bg-opacity-20 backdrop-blur-sm hover:bg-opacity-30 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg">
+                Book Appointment
+              </button>
+            </div>
+
+            {/* Image Indicators */}
+            <div className="flex justify-center space-x-2 mt-12">
+              {backgroundImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImageIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    currentImageIndex === index
+                      ? "bg-white w-8"
+                      : "bg-white bg-opacity-50 hover:bg-opacity-75"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Hero;
