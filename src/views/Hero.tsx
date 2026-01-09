@@ -66,11 +66,8 @@ const Hero = () => {
             {/* Logo */}
             <div className="flex items-center space-x-2">
               <img src={Logo} className="h-20 w-auto" alt="Company Logo" />
-              <span className=" text-2xl lg:text-3xl font-bold text-orange-400">
-                Harrisworth{" "}
-                <span className="text-[#50a2ff]">
-                  Group
-                </span>
+              <span className=" text-xl lg:text-3xl font-bold text-orange-400">
+                Harrisworth <span className="text-[#0cc1e0]">Consult</span>
               </span>
             </div>
 
@@ -80,7 +77,7 @@ const Hero = () => {
                 <a
                   key={item}
                   href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
-                  className=" text-xl font-semibold text-[#50a2ff] hover:text-orange-400 transition-colors duration-300"
+                  className=" text-xl font-semibold text-[#0cc1e0] hover:text-orange-400 transition-colors duration-300"
                 >
                   {item}
                 </a>
@@ -107,7 +104,7 @@ const Hero = () => {
                 <a
                   key={item}
                   href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="block text-white hover:text-[#50a2ff] py-2 transition-colors duration-300"
+                  className="block text-white hover:text-[#0cc1e0] py-2 transition-colors duration-300"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item}
@@ -122,7 +119,7 @@ const Hero = () => {
           <div className="text-center max-w-4xl">
             <h1 className="text-4xl md:text-7xl font-bold text-orange-400 mb-6 leading-tight">
               Transform Your
-              <span className="block text-[#50a2ff]">Educational Journey</span>
+              <span className="block text-[#0cc1e0]">Educational Journey</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto">
               Expert guidance to help students, parents and schools achieve
@@ -131,7 +128,7 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="group bg-[#50a2ff] hover:bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105">
+              <button className="group bg-[#0cc1e0] hover:bg-[#50a2ff] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105">
                 <span>Get Started</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
