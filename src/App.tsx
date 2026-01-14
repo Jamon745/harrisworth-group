@@ -3,6 +3,7 @@ import Hero from "./views/Hero";
 import './App.css'
 import AboutPage from "./views/About";
 import Services from "./views/Services";
+import HowItWorks from "./views/HowItWorks";
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
         <Hero />
         <AboutPage />
         <Services />
+        <HowItWorks />
         
         
       </div>

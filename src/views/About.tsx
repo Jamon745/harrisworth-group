@@ -24,7 +24,7 @@ export default function AboutPage() {
       {/* Who We Are Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16 transform hover:scale-[1.02] transition-transform duration-300">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0cc1e0] mb-6">
             Who We Are
           </h2>
           <p className="text-lg text-gray-700 leading-relaxed mb-4">

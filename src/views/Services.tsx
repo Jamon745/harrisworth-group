@@ -31,7 +31,7 @@ function Services() {
     <div>
       {/* Key Benefits Section */}
       <div className="mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-[#0cc1e0] text-center mb-12">
           How We Help You Succeed
         </h2>
         <div className="grid md:grid-cols-2 gap-8">
@@ -56,18 +56,6 @@ function Services() {
             </div>
           ))}
         </div>
-      </div>
-      {/* CTA Section */}
-      <div className="bg-[#0cc1e0]  rounded-2xl shadow-xl p-8 md:p-12 text-center text-white">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Ready to Start Your Journey?
-        </h2>
-        <p className="text-xl mb-8 text-blue-100">
-          Let's work together to turn your educational goals into reality
-        </p>
-        <button className="bg-white text-[#0cc1e0] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-          Schedule a Consultation
-        </button>
       </div>
     </div>
   );
