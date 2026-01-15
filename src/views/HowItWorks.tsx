@@ -189,16 +189,6 @@ export default function HowItWorks() {
           </button>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-[#0cc1e0] text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>
-            &copy; 2026 Harrisworth Consult. All rights reserved | Powered by
-            Jamon Technologies
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }

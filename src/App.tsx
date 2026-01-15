@@ -3,6 +3,7 @@ import "./App.css";
 import AboutPage from "./views/About";
 import Services from "./views/Services";
 import HowItWorks from "./views/HowItWorks";
+import ContactUs from "./views/ContactUS";
 
 function App() {
   return (
@@ -26,6 +27,11 @@ function App() {
         {/* How it Works section with id="how-it-works" */}
         <div id="how-it-works">
           <HowItWorks />
+        </div>
+
+        {/* Contact us section with id="contact-us" */}
+        <div id="contact-us">
+          <ContactUs />
         </div>
       </div>
     </>

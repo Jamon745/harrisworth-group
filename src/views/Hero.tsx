@@ -67,7 +67,7 @@ const Hero = () => {
       ))}
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/40 z-10" />
+      <div className="absolute inset-0 bg-gray-50/20 z-10" />
 
       {/* Content Container */}
       <div className="relative z-10">
@@ -135,7 +135,7 @@ const Hero = () => {
               Transform Your
               <span className="block text-[#0cc1e0]">Educational Journey</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-white mb-8 max-w-2xl mx-auto">
               Expert guidance to help students, parents and schools achieve
               their academic goals and unlock their full potential
             </p>
