@@ -5,7 +5,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-indigo-50">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-[#0cc1e0]  text-white">
+      <div className="relative overflow-hidden bg-linear-to-br from-[#0cc1e0] to-blue-500  text-white">
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
@@ -44,7 +44,7 @@ export default function AboutPage() {
         </div>
 
         {/* Mission Section */}
-        <div className="bg-[#0cc1e0] rounded-2xl shadow-xl p-8 md:p-12 mb-16 text-white">
+        <div className="bg-linear-to-br from-[#0cc1e0] to-blue-500 rounded-2xl shadow-xl p-8 md:p-12 mb-16 text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
           <p className="text-lg leading-relaxed">
             To provide exceptional, personalized educational consulting services

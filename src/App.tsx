@@ -4,6 +4,7 @@ import AboutPage from "./views/About";
 import Services from "./views/Services";
 import HowItWorks from "./views/HowItWorks";
 import ContactUs from "./views/ContactUS";
+import Footer from "./views/Footer";
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
         <div id="contact-us">
           <ContactUs />
         </div>
+
+        {/* Footer section " */}
+        <Footer />
       </div>
     </>
   );

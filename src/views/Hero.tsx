@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
-import Logo from "../assets/Harrisworthg-logo.png";
+import Logo from "../assets/harrisworthConsult-main.png";
 import HeroImg from "../assets/heroimg.jpg";
 import HeroImg2 from "../assets/heroimg2.jpg";
 import HeroImg3 from "../assets/heroImg3.jpg";
@@ -67,7 +67,7 @@ const Hero = () => {
       ))}
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-gray-50/20 z-10" />
+      <div className="absolute inset-0 bg-gray-700/80 z-10" />
 
       {/* Content Container */}
       <div className="relative z-10">
@@ -91,7 +91,7 @@ const Hero = () => {
                   key={item}
                   href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
                   onClick={(e) => handleNavClick(e, item)}
-                  className="text-xl font-semibold text-[#0cc1e0] hover:text-orange-400 transition-colors duration-300 cursor-pointer"
+                  className="text-xl font-semibold text-white hover:text-orange-400 transition-colors duration-300 cursor-pointer"
                 >
                   {item}
                 </a>

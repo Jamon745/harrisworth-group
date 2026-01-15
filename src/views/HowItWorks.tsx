@@ -177,7 +177,7 @@ export default function HowItWorks() {
         }
       `}</style>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="bg-[#0cc1e0] rounded-2xl shadow-xl p-8 md:p-12 text-center text-white">
+        <div className="bg-linear-to-br from-[#0cc1e0] to-blue-500 rounded-2xl shadow-xl p-8 md:p-12 text-center text-white">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
             Ready to Start Your Journey?
           </h2>

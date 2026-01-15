@@ -120,7 +120,7 @@ type SubmitStatus = "success" | "error" | "validation-error" | null;
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="bg-[#0cc1e0] bg-opacity-10 p-3 rounded-lg">
-                    <Mail className="w-6 h-6 text-[#0cc1e0]" />
+                    <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800 mb-1">Email</h3>
@@ -133,7 +133,7 @@ type SubmitStatus = "success" | "error" | "validation-error" | null;
 
                 <div className="flex items-start space-x-4">
                   <div className="bg-orange-400 bg-opacity-10 p-3 rounded-lg">
-                    <Phone className="w-6 h-6 text-orange-400" />
+                    <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800 mb-1">Phone</h3>
@@ -144,7 +144,7 @@ type SubmitStatus = "success" | "error" | "validation-error" | null;
 
                 <div className="flex items-start space-x-4">
                   <div className="bg-[#0cc1e0] bg-opacity-10 p-3 rounded-lg">
-                    <MapPin className="w-6 h-6 text-[#0cc1e0]" />
+                    <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800 mb-1">Office</h3>
@@ -158,7 +158,7 @@ type SubmitStatus = "success" | "error" | "validation-error" | null;
 
                 <div className="flex items-start space-x-4">
                   <div className="bg-orange-400 bg-opacity-10 p-3 rounded-lg">
-                    <Clock className="w-6 h-6 text-orange-400" />
+                    <Clock className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800 mb-1">
