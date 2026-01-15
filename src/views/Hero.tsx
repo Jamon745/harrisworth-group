@@ -23,13 +23,24 @@ const Hero = () => {
     HeroImg6,
   ];
 
-  const navItems = [
-    "Home",
-    "About",
-    "Services",
-    "How it Works",
-    "Contact Us"
-  ];
+  const navItems = ["Home", "About", "Services", "How it Works", "Contact Us"];
+
+  // Smooth scroll function
+  const handleNavClick = (e:React.MouseEvent<HTMLAnchorElement>, item:string) => {
+    e.preventDefault();
+    const sectionId = item.toLowerCase().replace(/\s+/g, "-");
+    const section = document.getElementById(sectionId);
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+
+    // Close mobile menu after clicking
+    setIsMenuOpen(false);
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -65,8 +76,10 @@ const Hero = () => {
           <div className="-mt-6 flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <img src={Logo} className="h-20 w-auto" alt="Company Logo" />
-              <span className=" text-xl lg:text-3xl font-bold text-orange-400">
+              <div className="h-20 w-20 bg-white rounded-full flex items-center justify-center text-white font-bold text-2xl">
+                <img src={Logo} alt="Company's Logo" />
+              </div>
+              <span className="text-xl lg:text-3xl font-bold text-orange-400">
                 Harrisworth <span className="text-[#0cc1e0]">Consult</span>
               </span>
             </div>
@@ -77,7 +90,8 @@ const Hero = () => {
                 <a
                   key={item}
                   href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
-                  className=" text-xl font-semibold text-[#0cc1e0] hover:text-orange-400 transition-colors duration-300"
+                  onClick={(e) => handleNavClick(e, item)}
+                  className="text-xl font-semibold text-[#0cc1e0] hover:text-orange-400 transition-colors duration-300 cursor-pointer"
                 >
                   {item}
                 </a>
@@ -104,8 +118,8 @@ const Hero = () => {
                 <a
                   key={item}
                   href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="block text-white hover:text-[#0cc1e0] py-2 transition-colors duration-300"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => handleNavClick(e, item)}
+                  className="block text-white hover:text-[#0cc1e0] py-2 transition-colors duration-300 cursor-pointer"
                 >
                   {item}
                 </a>
