@@ -58,7 +58,7 @@ export default function HowItWorks() {
   const currentStepData = steps[currentStep];
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen overflow-x-hidden bg-linear-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
         <h2 className="text-4xl md:text-5xl font-bold text-[#0cc1e0] mb-4">
@@ -99,8 +99,9 @@ export default function HowItWorks() {
           {/* Navigation Arrows */}
           <button
             onClick={prevStep}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 bg-white hover:bg-gray-50 p-3 rounded-full shadow-lg transition-all hover:scale-110"
-            aria-label="Previous step"
+            className="absolute left-2 md:-left-12 top-1/2 -translate-y-1/2
+           bg-white hover:bg-gray-50 p-3 rounded-full shadow-lg
+           transition-all hover:scale-110"
           >
             <svg
               className="w-6 h-6 text-gray-700"
@@ -119,8 +120,9 @@ export default function HowItWorks() {
 
           <button
             onClick={nextStep}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 bg-white hover:bg-gray-50 p-3 rounded-full shadow-lg transition-all hover:scale-110"
-            aria-label="Next step"
+            className="absolute right-2 md:-right-12 top-1/2 -translate-y-1/2
+           bg-white hover:bg-gray-50 p-3 rounded-full shadow-lg
+           transition-all hover:scale-110"
           >
             <svg
               className="w-6 h-6 text-gray-700"

@@ -35,7 +35,7 @@ function Services() {
     <div>
       {/* Key Benefits Section */}
       <div className="mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#0cc1e0] text-center mb-12">
+        <h2 className="text-4xl md:text-4xl font-bold text-[#0cc1e0] text-center mb-12">
           How We Help You Succeed
         </h2>
         <div className="grid md:grid-cols-2 gap-8">

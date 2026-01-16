@@ -76,7 +76,7 @@ const Hero = () => {
           <div className="-mt-6 flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <div className="h-20 w-20 bg-white rounded-full flex items-center justify-center text-white font-bold text-2xl">
+              <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center text-white font-bold text-2xl">
                 <img src={Logo} alt="Company's Logo" />
               </div>
               <span className="text-xl lg:text-3xl font-bold text-orange-400">

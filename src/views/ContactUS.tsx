@@ -96,7 +96,7 @@ type SubmitStatus = "success" | "error" | "validation-error" | null;
 
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-indigo-50 py-16 px-4">
+    <div className="min-h-screen overflow-x-hidden bg-linear-to-br from-blue-50 via-white to-indigo-50 py-16 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -109,10 +109,10 @@ type SubmitStatus = "success" | "error" | "validation-error" | null;
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {/* Contact Information */}
-          <div className="space-y-8">
-            <div className="bg-white rounded-2xl shadow-xl p-8">
+          <div className="space-y-8 w-full">
+            <div className="bg-white rounded-2xl shadow-xl p-8 w-full">
               <h2 className="text-2xl font-bold text-[#0cc1e0] mb-6">
                 Contact Information
               </h2>
