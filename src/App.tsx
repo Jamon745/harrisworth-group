@@ -2,6 +2,7 @@ import Hero from "./views/Hero";
 import "./App.css";
 import AboutPage from "./views/About";
 import Services from "./views/Services";
+import Testimonials from '../src/Components/Testimonials'
 import HowItWorks from "./views/HowItWorks";
 import ContactUs from "./views/ContactUS";
 import Footer from "./views/Footer";
@@ -29,6 +30,9 @@ function App() {
         <div id="how-it-works">
           <HowItWorks />
         </div>
+
+        {/* Testimonial section" */}
+        <Testimonials />
 
         {/* Contact us section with id="contact-us" */}
         <div id="contact-us">

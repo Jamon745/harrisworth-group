@@ -102,62 +102,89 @@ const Hero: React.FC = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [backgroundImages.length]);
 
-  const handleGetStartedSubmit = () => {
-    if (
-      !getStartedData.fullName ||
-      !getStartedData.email ||
-      !getStartedData.phone ||
-      !getStartedData.studentGrade ||
-      !getStartedData.interests ||
-      !getStartedData.goals
-    ) {
-      alert("Please fill in all required fields");
-      return;
-    }
-    console.log("Get Started Form Submitted:", getStartedData);
-    alert(
-      "Thank you! We will contact you shortly to begin your educational journey.",
-    );
-    setActiveForm(null);
-    setGetStartedData({
-      fullName: "",
-      email: "",
-      phone: "",
-      studentGrade: "",
-      interests: "",
-      goals: "",
-    });
-  };
+ const COMPANY_EMAIL = "kingjaymes76@gmail.com";
 
-  const handleAppointmentSubmit = () => {
-    if (
-      !appointmentData.fullName ||
-      !appointmentData.email ||
-      !appointmentData.phone ||
-      !appointmentData.serviceType ||
-      !appointmentData.preferredDate ||
-      !appointmentData.preferredTime
-    ) {
-      alert("Please fill in all required fields");
-      return;
-    }
-    console.log("Appointment Form Submitted:", appointmentData);
-    alert(
-      "Your appointment request has been received! We will confirm your booking soon.",
-    );
-    setActiveForm(null);
-    setAppointmentData({
-      fullName: "",
-      email: "",
-      phone: "",
-      serviceType: "",
-      preferredDate: "",
-      preferredTime: "",
-      message: "",
-    });
-  };
+ const handleGetStartedSubmit = () => {
+   if (
+     !getStartedData.fullName ||
+     !getStartedData.email ||
+     !getStartedData.phone ||
+     !getStartedData.studentGrade ||
+     !getStartedData.interests ||
+     !getStartedData.goals
+   ) {
+     alert("Please fill in all required fields");
+     return;
+   }
+
+   const subject = encodeURIComponent("New Get Started Form Submission");
+   const body = encodeURIComponent(`
+Full Name: ${getStartedData.fullName}
+Email: ${getStartedData.email}
+Phone: ${getStartedData.phone}
+Grade Level: ${getStartedData.studentGrade}
+Interests: ${getStartedData.interests}
+Goals: ${getStartedData.goals}
+`);
+
+   window.location.href = `mailto:${COMPANY_EMAIL}?subject=${subject}&body=${body}`;
+
+   setActiveForm(null);
+   setGetStartedData({
+     fullName: "",
+     email: "",
+     phone: "",
+     studentGrade: "",
+     interests: "",
+     goals: "",
+   });
+ };
+
+
+ const handleAppointmentSubmit = () => {
+   if (
+     !appointmentData.fullName ||
+     !appointmentData.email ||
+     !appointmentData.phone ||
+     !appointmentData.serviceType ||
+     !appointmentData.preferredDate ||
+     !appointmentData.preferredTime
+   ) {
+     alert("Please fill in all required fields");
+     return;
+   }
+
+   const subject = encodeURIComponent("New Appointment Booking Request");
+   const body = encodeURIComponent(`
+Full Name: ${appointmentData.fullName}
+Email: ${appointmentData.email}
+Phone: ${appointmentData.phone}
+Service Type: ${appointmentData.serviceType}
+Preferred Date: ${appointmentData.preferredDate}
+Preferred Time: ${appointmentData.preferredTime}
+Message: ${appointmentData.message || "N/A"}
+`);
+
+   window.location.href = `mailto:${COMPANY_EMAIL}?subject=${subject}&body=${body}`;
+
+   alert(
+     "Your appointment request has been received! We will confirm your booking soon.",
+   );
+
+   setActiveForm(null);
+   setAppointmentData({
+     fullName: "",
+     email: "",
+     phone: "",
+     serviceType: "",
+     preferredDate: "",
+     preferredTime: "",
+     message: "",
+   });
+ };
+
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-linear-to-br from-blue-50 to-indigo-100 p-4">

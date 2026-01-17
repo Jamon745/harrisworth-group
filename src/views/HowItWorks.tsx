@@ -1,7 +1,33 @@
+import { Calendar, Mail, MessageSquareReply, Phone, User, X } from "lucide-react";
 import { useState, useEffect } from "react";
+
+type FormType = "get-started" | "book-appointment" | null;
+
+interface AppointmentFormData {
+  fullName: string;
+  email: string;
+  phone: string;
+  serviceType: string;
+  preferredDate: string;
+  preferredTime: string;
+  message: string;
+}
 
 export default function HowItWorks() {
   const [currentStep, setCurrentStep] = useState(0);
+  const [activeForm, setActiveForm] = useState<FormType>(null);
+
+  const COMPANY_EMAIL = "kingjaymes76@gmail.com";
+
+   const [appointmentData, setAppointmentData] = useState<AppointmentFormData>({
+      fullName: "",
+      email: "",
+      phone: "",
+      serviceType: "",
+      preferredDate: "",
+      preferredTime: "",
+      message: "",
+    });
 
   const steps = [
     {
@@ -57,14 +83,57 @@ export default function HowItWorks() {
 
   const currentStepData = steps[currentStep];
 
+  
+ const handleAppointmentSubmit = () => {
+   if (
+     !appointmentData.fullName ||
+     !appointmentData.email ||
+     !appointmentData.phone ||
+     !appointmentData.serviceType ||
+     !appointmentData.preferredDate ||
+     !appointmentData.preferredTime
+   ) {
+     alert("Please fill in all required fields");
+     return;
+   }
+
+   const subject = encodeURIComponent("New Appointment Booking Request");
+   const body = encodeURIComponent(`
+Full Name: ${appointmentData.fullName}
+Email: ${appointmentData.email}
+Phone: ${appointmentData.phone}
+Service Type: ${appointmentData.serviceType}
+Preferred Date: ${appointmentData.preferredDate}
+Preferred Time: ${appointmentData.preferredTime}
+Message: ${appointmentData.message || "N/A"}
+`);
+
+   window.location.href = `mailto:${COMPANY_EMAIL}?subject=${subject}&body=${body}`;
+
+   alert(
+     "Your appointment request has been received! We will confirm your booking soon.",
+   );
+
+   setActiveForm(null);
+   setAppointmentData({
+     fullName: "",
+     email: "",
+     phone: "",
+     serviceType: "",
+     preferredDate: "",
+     preferredTime: "",
+     message: "",
+   });
+ };
+
   return (
-    <div className="min-h-screen overflow-x-hidden bg-linear-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen overflow-x-hidden bg-linear-to-br from-[#0cc1e0] to-orange-200">
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#0cc1e0] mb-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
           How It Works
         </h2>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="text-xl text-white max-w-3xl mx-auto">
           Our straightforward process ensures every student receives the
           personalized support they need to thrive academically
         </p>
@@ -186,10 +255,194 @@ export default function HowItWorks() {
           <p className="text-lg sm:text-xl mb-8 text-blue-100">
             Let's work together to turn your educational goals into reality
           </p>
-          <button className="bg-white text-[#0cc1e0] px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-blue-50 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+          <button
+            onClick={() => setActiveForm("book-appointment")}
+            className="bg-white text-[#0cc1e0] px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-blue-50 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+          >
             <span className="blink-button-text">Schedule a Consultation</span>
           </button>
         </div>
+        {/* Modal Overlay */}
+        {activeForm && (
+          <div className="fixed inset-0 bg-black/60 bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        {/* Schedule Appointment Form */}
+        {activeForm === "book-appointment" && (
+          <div className="p-8">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-3xl font-bold text-[#0cc1e0]">
+                Book an Appointment
+              </h2>
+              <button
+                onClick={() => setActiveForm(null)}
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <X size={28} />
+              </button>
+            </div>
+            <p className="text-gray-600 mb-8">
+              Schedule a consultation with our expert advisors. We're here to
+              help you succeed.
+            </p>
+
+            <div className="space-y-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <User className="inline mr-2" size={18} />
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  value={appointmentData.fullName}
+                  onChange={(e) =>
+                    setAppointmentData({
+                      ...appointmentData,
+                      fullName: e.target.value,
+                    })
+                  }
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  placeholder="Enter your full name"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <Mail className="inline mr-2" size={18} />
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  value={appointmentData.email}
+                  onChange={(e) =>
+                    setAppointmentData({
+                      ...appointmentData,
+                      email: e.target.value,
+                    })
+                  }
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  placeholder="your.email@example.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <Phone className="inline mr-2" size={18} />
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  value={appointmentData.phone}
+                  onChange={(e) =>
+                    setAppointmentData({
+                      ...appointmentData,
+                      phone: e.target.value,
+                    })
+                  }
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  placeholder="+1 (555) 000-0000"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Service Type
+                </label>
+                <select
+                  value={appointmentData.serviceType}
+                  onChange={(e) =>
+                    setAppointmentData({
+                      ...appointmentData,
+                      serviceType: e.target.value,
+                    })
+                  }
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                >
+                  <option value="">Select a service</option>
+                  <option value="academic-planning">Academic Planning</option>
+                  <option value="college-prep">College Preparation</option>
+                  <option value="tutoring">Tutoring Services</option>
+                  <option value="career-counseling">Career Counseling</option>
+                  <option value="test-prep">Test Preparation</option>
+                  <option value="consultation">General Consultation</option>
+                </select>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <Calendar className="inline mr-2" size={18} />
+                    Preferred Date
+                  </label>
+                  <input
+                    type="date"
+                    value={appointmentData.preferredDate}
+                    onChange={(e) =>
+                      setAppointmentData({
+                        ...appointmentData,
+                        preferredDate: e.target.value,
+                      })
+                    }
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Preferred Time
+                  </label>
+                  <select
+                    value={appointmentData.preferredTime}
+                    onChange={(e) =>
+                      setAppointmentData({
+                        ...appointmentData,
+                        preferredTime: e.target.value,
+                      })
+                    }
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  >
+                    <option value="">Select time</option>
+                    <option value="9:00 AM">9:00 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="1:00 PM">1:00 PM</option>
+                    <option value="2:00 PM">2:00 PM</option>
+                    <option value="3:00 PM">3:00 PM</option>
+                    <option value="4:00 PM">4:00 PM</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <MessageSquareReply className="inline mr-2" size={18} />
+                  Additional Message
+                </label>
+                <textarea
+                  value={appointmentData.message}
+                  onChange={(e) =>
+                    setAppointmentData({
+                      ...appointmentData,
+                      message: e.target.value,
+                    })
+                  }
+                  rows={4}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  placeholder="Any specific topics you'd like to discuss? (Optional)"
+                />
+              </div>
+
+              <button
+                onClick={handleAppointmentSubmit}
+                className="w-full py-4 bg-[#0cc1e0] text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors shadow-lg"
+              >
+                Book Appointment
+              </button>
+            </div>
+          </div>
+        )}
+        </div>
+        </div>
+        )}
       </div>
     </div>
   );
