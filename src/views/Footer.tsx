@@ -14,20 +14,14 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   const navigationLinks = [
-    { name: "Home", href: "#" },
-    { name: "About Us", href: "#" },
-    { name: "Services", href: "#" },
-    { name: "How It Works", href: "#" },
-    { name: "Contact", href: "#" },
+    { name: "Home", href: "home" },
+    { name: "About Us", href: "about" },
+    { name: "Services", href: "services" },
+    { name: "How It Works", href: "how-it-works" },
+    { name: "Contact", href: "contact" },
   ];
 
-  const services = [
-    { name: "College Admissions", href: "#" },
-    { name: "Career Counseling", href: "#" },
-    { name: "Test Preparation", href: "#" },
-    { name: "Academic Tutoring", href: "#" },
-    { name: "Study Abroad", href: "#" },
-  ];
+ 
 
   const legalLinks = [
     { name: "Privacy Policy", href: "#" },
@@ -56,15 +50,27 @@ const Footer: React.FC = () => {
     },
   ];
 
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string,
+  ) => {
+    e.preventDefault();
+    const target = document.getElementById(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+
   return (
     <footer className="bg-linear-to-br from-[#0cc1e0] to-blue-500  text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8 text-2xl">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="h-20 w-20 bg-white rounded-full flex items-center justify-center text-white font-bold text-2xl">
+              <div className="h-20 w-20 bg-white rounded-full flex items-center justify-center text-white font-bold">
                 <img src={Logo} alt="Company's Logo" />
               </div>
               <span className="text-xl lg:text-3xl font-bold text-orange-400">
@@ -100,31 +106,15 @@ const Footer: React.FC = () => {
           {/* Navigation Links */}
           <div>
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-lg">
               {navigationLinks.map((link) => (
                 <li key={link.name}>
                   <a
-                    href={link.href}
-                    className="text-white hover:text-orange-400 transition-colors duration-200 hover:translate-x-1 inline-block"
+                    href={`#${link.href}`}
+                    onClick={(e) => handleSmoothScroll(e, link.href)}
+                    className="text-white hover:text-orange-400 transition-all duration-200 hover:translate-x-1 inline-block"
                   >
                     {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Our Services</h3>
-            <ul className="space-y-2 text-sm">
-              {services.map((service) => (
-                <li key={service.name}>
-                  <a
-                    href={service.href}
-                    className="hover:text-orange-400 text-white transition-colors duration-200 hover:translate-x-1 inline-block"
-                  >
-                    {service.name}
                   </a>
                 </li>
               ))}
@@ -133,11 +123,12 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-orange-400 pt-8">
+        <div className="border-t border-white  pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
             <div className="text-sm text-white">
-              © {currentYear} Harrisworth Consult. All rights reserved.
+              © {currentYear} Harrisworth Consult. All rights reserved | Powered
+              by Jamon Innovations
             </div>
 
             {/* Social Links */}

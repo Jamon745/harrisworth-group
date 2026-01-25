@@ -203,7 +203,7 @@ type SubmitStatus = "success" | "error" | "validation-error" | null;
           {/* Contact Form */}
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <h2 className="text-2xl font-bold text-[#0cc1e0] mb-6">
-              Send Us a Message
+             Send Us A Message
             </h2>
 
             <div className="space-y-6">

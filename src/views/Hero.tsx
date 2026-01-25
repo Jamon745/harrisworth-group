@@ -288,7 +288,7 @@ Message: ${appointmentData.message || "N/A"}
                   onClick={() => setActiveForm("book-appointment")}
                   className="bg-orange-400 bg-opacity-20 backdrop-blur-sm hover:bg-opacity-30 hover:bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg"
                 >
-                  Book Appointment
+                  Book A Free Consultation
                 </button>
               </div>
             </div>

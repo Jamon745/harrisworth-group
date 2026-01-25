@@ -60,14 +60,20 @@ export default function HowItWorks() {
     },
   ];
 
-  // Auto-advance slideshow every 5 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentStep((prev) => (prev + 1) % steps.length);
-    }, 5000);
+  const [isHovered, setIsHovered] = useState(false);
 
-    return () => clearInterval(interval);
-  }, [steps.length]);
+
+  // Auto-advance slideshow every 5 seconds
+useEffect(() => {
+  if (isHovered) return; // Pause when hovering
+
+  const interval = setInterval(() => {
+    setCurrentStep((prev) => (prev + 1) % steps.length);
+  }, 5000);
+
+  return () => clearInterval(interval);
+}, [isHovered, steps.length]);
+
 
   const nextStep = () => {
     setCurrentStep((prev) => (prev + 1) % steps.length);
@@ -141,7 +147,11 @@ Message: ${appointmentData.message || "N/A"}
 
       {/* Slideshow Section */}
       <section className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="relative">
+        <div
+          className="relative"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           {/* Main Slide */}
           <div className="bg-white rounded-3xl shadow-2xl p-12 md:p-16 min-h-56 flex flex-col items-center justify-center text-center transition-all duration-700 ease-in-out">
             {/* Icon */}
@@ -266,182 +276,190 @@ Message: ${appointmentData.message || "N/A"}
         {activeForm && (
           <div className="fixed inset-0 bg-black/60 bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        {/* Schedule Appointment Form */}
-        {activeForm === "book-appointment" && (
-          <div className="p-8">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-3xl font-bold text-[#0cc1e0]">
-                Book an Appointment
-              </h2>
-              <button
-                onClick={() => setActiveForm(null)}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <X size={28} />
-              </button>
-            </div>
-            <p className="text-gray-600 mb-8">
-              Schedule a consultation with our expert advisors. We're here to
-              help you succeed.
-            </p>
+              {/* Schedule Appointment Form */}
+              {activeForm === "book-appointment" && (
+                <div className="p-8">
+                  <div className="flex justify-between items-center mb-6">
+                    <h2 className="text-3xl font-bold text-[#0cc1e0]">
+                      Book an Appointment
+                    </h2>
+                    <button
+                      onClick={() => setActiveForm(null)}
+                      className="text-gray-400 hover:text-gray-600 transition-colors"
+                    >
+                      <X size={28} />
+                    </button>
+                  </div>
+                  <p className="text-gray-600 mb-8">
+                    Schedule a consultation with our expert advisors. We're here
+                    to help you succeed.
+                  </p>
 
-            <div className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  <User className="inline mr-2" size={18} />
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  value={appointmentData.fullName}
-                  onChange={(e) =>
-                    setAppointmentData({
-                      ...appointmentData,
-                      fullName: e.target.value,
-                    })
-                  }
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                  placeholder="Enter your full name"
-                />
-              </div>
+                  <div className="space-y-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <User className="inline mr-2" size={18} />
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        value={appointmentData.fullName}
+                        onChange={(e) =>
+                          setAppointmentData({
+                            ...appointmentData,
+                            fullName: e.target.value,
+                          })
+                        }
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        placeholder="Enter your full name"
+                      />
+                    </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  <Mail className="inline mr-2" size={18} />
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  value={appointmentData.email}
-                  onChange={(e) =>
-                    setAppointmentData({
-                      ...appointmentData,
-                      email: e.target.value,
-                    })
-                  }
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                  placeholder="your.email@example.com"
-                />
-              </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <Mail className="inline mr-2" size={18} />
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        value={appointmentData.email}
+                        onChange={(e) =>
+                          setAppointmentData({
+                            ...appointmentData,
+                            email: e.target.value,
+                          })
+                        }
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        placeholder="your.email@example.com"
+                      />
+                    </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  <Phone className="inline mr-2" size={18} />
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  value={appointmentData.phone}
-                  onChange={(e) =>
-                    setAppointmentData({
-                      ...appointmentData,
-                      phone: e.target.value,
-                    })
-                  }
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                  placeholder="+1 (555) 000-0000"
-                />
-              </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <Phone className="inline mr-2" size={18} />
+                        Phone Number
+                      </label>
+                      <input
+                        type="tel"
+                        value={appointmentData.phone}
+                        onChange={(e) =>
+                          setAppointmentData({
+                            ...appointmentData,
+                            phone: e.target.value,
+                          })
+                        }
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        placeholder="+1 (555) 000-0000"
+                      />
+                    </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Service Type
-                </label>
-                <select
-                  value={appointmentData.serviceType}
-                  onChange={(e) =>
-                    setAppointmentData({
-                      ...appointmentData,
-                      serviceType: e.target.value,
-                    })
-                  }
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                >
-                  <option value="">Select a service</option>
-                  <option value="academic-planning">Academic Planning</option>
-                  <option value="college-prep">College Preparation</option>
-                  <option value="tutoring">Tutoring Services</option>
-                  <option value="career-counseling">Career Counseling</option>
-                  <option value="test-prep">Test Preparation</option>
-                  <option value="consultation">General Consultation</option>
-                </select>
-              </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Service Type
+                      </label>
+                      <select
+                        value={appointmentData.serviceType}
+                        onChange={(e) =>
+                          setAppointmentData({
+                            ...appointmentData,
+                            serviceType: e.target.value,
+                          })
+                        }
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                      >
+                        <option value="">Select a service</option>
+                        <option value="academic-planning">
+                          Academic Planning
+                        </option>
+                        <option value="college-prep">
+                          College Preparation
+                        </option>
+                        <option value="tutoring">Tutoring Services</option>
+                        <option value="career-counseling">
+                          Career Counseling
+                        </option>
+                        <option value="test-prep">Test Preparation</option>
+                        <option value="consultation">
+                          General Consultation
+                        </option>
+                      </select>
+                    </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    <Calendar className="inline mr-2" size={18} />
-                    Preferred Date
-                  </label>
-                  <input
-                    type="date"
-                    value={appointmentData.preferredDate}
-                    onChange={(e) =>
-                      setAppointmentData({
-                        ...appointmentData,
-                        preferredDate: e.target.value,
-                      })
-                    }
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                  />
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          <Calendar className="inline mr-2" size={18} />
+                          Preferred Date
+                        </label>
+                        <input
+                          type="date"
+                          value={appointmentData.preferredDate}
+                          onChange={(e) =>
+                            setAppointmentData({
+                              ...appointmentData,
+                              preferredDate: e.target.value,
+                            })
+                          }
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Preferred Time
+                        </label>
+                        <select
+                          value={appointmentData.preferredTime}
+                          onChange={(e) =>
+                            setAppointmentData({
+                              ...appointmentData,
+                              preferredTime: e.target.value,
+                            })
+                          }
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        >
+                          <option value="">Select time</option>
+                          <option value="9:00 AM">9:00 AM</option>
+                          <option value="10:00 AM">10:00 AM</option>
+                          <option value="11:00 AM">11:00 AM</option>
+                          <option value="1:00 PM">1:00 PM</option>
+                          <option value="2:00 PM">2:00 PM</option>
+                          <option value="3:00 PM">3:00 PM</option>
+                          <option value="4:00 PM">4:00 PM</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <MessageSquareReply className="inline mr-2" size={18} />
+                        Additional Message
+                      </label>
+                      <textarea
+                        value={appointmentData.message}
+                        onChange={(e) =>
+                          setAppointmentData({
+                            ...appointmentData,
+                            message: e.target.value,
+                          })
+                        }
+                        rows={4}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        placeholder="Any specific topics you'd like to discuss? (Optional)"
+                      />
+                    </div>
+
+                    <button
+                      onClick={handleAppointmentSubmit}
+                      className="w-full py-4 bg-[#0cc1e0] text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors shadow-lg"
+                    >
+                      Book Appointment
+                    </button>
+                  </div>
                 </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Preferred Time
-                  </label>
-                  <select
-                    value={appointmentData.preferredTime}
-                    onChange={(e) =>
-                      setAppointmentData({
-                        ...appointmentData,
-                        preferredTime: e.target.value,
-                      })
-                    }
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                  >
-                    <option value="">Select time</option>
-                    <option value="9:00 AM">9:00 AM</option>
-                    <option value="10:00 AM">10:00 AM</option>
-                    <option value="11:00 AM">11:00 AM</option>
-                    <option value="1:00 PM">1:00 PM</option>
-                    <option value="2:00 PM">2:00 PM</option>
-                    <option value="3:00 PM">3:00 PM</option>
-                    <option value="4:00 PM">4:00 PM</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  <MessageSquareReply className="inline mr-2" size={18} />
-                  Additional Message
-                </label>
-                <textarea
-                  value={appointmentData.message}
-                  onChange={(e) =>
-                    setAppointmentData({
-                      ...appointmentData,
-                      message: e.target.value,
-                    })
-                  }
-                  rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                  placeholder="Any specific topics you'd like to discuss? (Optional)"
-                />
-              </div>
-
-              <button
-                onClick={handleAppointmentSubmit}
-                className="w-full py-4 bg-[#0cc1e0] text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors shadow-lg"
-              >
-                Book Appointment
-              </button>
+              )}
             </div>
           </div>
-        )}
-        </div>
-        </div>
         )}
       </div>
     </div>
