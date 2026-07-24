@@ -86,9 +86,8 @@ const Footer: React.FC = () => {
               <div className="flex items-start space-x-2">
                 <MapPin className="w-4 h-4 mt-1 shrink-0" />
                 <span>
-                  123 Education Street, Suite 100
-                  <br />
-                  London, United Kingdom
+                  61 Bridge Street, Kington, United Kingdom, HR5 3DJ
+                  
                 </span>
               </div>
               <div className="flex items-center space-x-2">
@@ -98,7 +97,7 @@ const Footer: React.FC = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 shrink-0" />
-                <span>info@harrisworthconsult.com</span> <br />
+                <span>info@harrisworthgroupltd.co.uk</span> <br />
               </div>
             </div>
           </div>
@@ -127,8 +126,8 @@ const Footer: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
             <div className="text-sm text-white">
-              © {currentYear} Harrisworth Consult. All rights reserved | Powered
-              by Jamon Innovations
+              © {currentYear} Harrisworth Group. All rights reserved | Powered
+              by Jamon TECHUB
             </div>
 
             {/* Social Links */}

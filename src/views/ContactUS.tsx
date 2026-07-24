@@ -124,10 +124,10 @@ type SubmitStatus = "success" | "error" | "validation-error" | null;
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800 mb-1">Email</h3>
-                    <p className="text-gray-600">info@harrisworthconsult.com</p>
                     <p className="text-gray-600">
-                      support@harrisworthconsult.com
+                      info@harrisworthgroupltd.co.uk
                     </p>
+                    
                   </div>
                 </div>
 
@@ -149,9 +149,7 @@ type SubmitStatus = "success" | "error" | "validation-error" | null;
                   <div>
                     <h3 className="font-semibold text-gray-800 mb-1">Office</h3>
                     <p className="text-gray-600">
-                      123 Education Street,
-                      <br />
-                      London, United Kingdom
+                      61 Bridge Street, Kington, United Kingdom, HR5 3DJ
                     </p>
                   </div>
                 </div>
@@ -203,7 +201,7 @@ type SubmitStatus = "success" | "error" | "validation-error" | null;
           {/* Contact Form */}
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <h2 className="text-2xl font-bold text-[#0cc1e0] mb-6">
-             Send Us A Message
+              Send Us A Message
             </h2>
 
             <div className="space-y-6">

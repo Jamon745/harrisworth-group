@@ -214,7 +214,7 @@ Message: ${appointmentData.message || "N/A"}
                 <img src={Logo} alt="Company's Logo" />
               </div>
               <span className="text-2xl lg:text-3xl font-bold text-orange-400">
-                Harrisworth <span className="text-[#0cc1e0]">Consult</span>
+                Harrisworth <span className="text-[#0cc1e0]">Group</span>
               </span>
             </div>
 

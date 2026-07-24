@@ -22,7 +22,7 @@ const testimonials: Testimonial[] = [
     image:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
     rating: 5,
-    text: "Harriswoth Consult completely transformed my college application process. Their personalized guidance helped me identify my strengths and craft compelling essays that truly reflected who I am. I'm now studying at my dream school!",
+    text: "Harrisworth Consult completely transformed my college application process. Their personalized guidance helped me identify my strengths and craft compelling essays that truly reflected who I am. I'm now studying at my dream school!",
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ const testimonials: Testimonial[] = [
     image:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
     rating: 5,
-    text: "The consultants at Harriswoth didn't just help me get into MIT—they helped me discover my passion for engineering. Their strategic approach to test prep and extracurricular planning was invaluable. I couldn't have done it without them.",
+    text: "The consultants at Harrisworth didn't just help me get into MIT—they helped me discover my passion for engineering. Their strategic approach to test prep and extracurricular planning was invaluable. I couldn't have done it without them.",
   },
   {
     id: 3,
@@ -44,7 +44,7 @@ const testimonials: Testimonial[] = [
     image:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
     rating: 5,
-    text: "Working with Harriswoth Consult was the best investment in my future. They provided expert advice on everything from course selection to scholarship applications. Their team genuinely cares about student success and it shows in the results.",
+    text: "Working with Harrisworth Consult was the best investment in my future. They provided expert advice on everything from course selection to scholarship applications. Their team genuinely cares about student success and it shows in the results.",
   },
   {
     id: 4,
@@ -55,7 +55,7 @@ const testimonials: Testimonial[] = [
     image:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
     rating: 5,
-    text: "I was struggling with my SAT scores and felt overwhelmed by the college process. Harriswoth's dedicated tutors helped me improve my scores by 200 points and their application coaches helped me secure admission to Princeton with a full scholarship!",
+    text: "I was struggling with my SAT scores and felt overwhelmed by the college process. Harrisworth's dedicated tutors helped me improve my scores by 200 points and their application coaches helped me secure admission to Princeton with a full scholarship!",
   },
   {
     id: 5,
@@ -66,7 +66,7 @@ const testimonials: Testimonial[] = [
     image:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
     rating: 5,
-    text: "Harriswoth Consult's holistic approach made all the difference. They didn't just focus on grades and test scores—they helped me develop leadership skills and build a compelling narrative. Their support throughout my journey was exceptional.",
+    text: "Harrisworth Consult's holistic approach made all the difference. They didn't just focus on grades and test scores—they helped me develop leadership skills and build a compelling narrative. Their support throughout my journey was exceptional.",
   },
 ];
 
